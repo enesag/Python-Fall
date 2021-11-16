@@ -1,0 +1,39 @@
+{
+    "context:property-placeholder": {
+        "location": "src/sport.json"
+    },
+    "beans": {
+        "myFortuneService": {
+            "class": "FortuneService"
+        },
+        "myCoach": {
+            "class": "Coach",
+            "constructor-args": [
+                "myFortuneService"
+            ]
+        },
+        "myCricketCoach": {
+            "class": "CricketCoach",
+            "constructor-args": [
+                "myFortuneService"
+            ]
+        },
+        "myBaseballCoach": {
+            "class": "BaseballCoach",
+            "properties": [
+                {
+                    "name": "fortuneService",
+                    "ref": "myFortuneService"
+                },
+                {
+                    "name": "emailAddress",
+                    "value": "${foo.email}"
+                },
+                {
+                    "name": "team",
+                    "value": "${foo.team}"
+                }
+            ]
+        }
+    }
+}
